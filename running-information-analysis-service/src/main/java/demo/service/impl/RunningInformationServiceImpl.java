@@ -6,9 +6,11 @@ import demo.service.RunningInformationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class RunningInformationServiceImpl implements RunningInformationService{
 
     private RunningInformationRepository runningInformationRepository;
@@ -20,26 +22,31 @@ public class RunningInformationServiceImpl implements RunningInformationService{
     }
     @Override
     public List<RunningInformation> saveRunningInformation(List<RunningInformation> runningInformationList) {
-        return null;
+        return runningInformationRepository.save(runningInformationList);
     }
 
     @Override
     public Page<RunningInformation> findByHeartRate(int heartRate, Pageable pageable) {
-        return null;
+        return runningInformationRepository.findByHeartRate(heartRate, pageable);
     }
 
     @Override
     public Page<RunningInformation> findByHeartRateGreaterThan(int heartRate, Pageable pageable) {
-        return null;
+        return runningInformationRepository.findByHeartRateGreaterThan(heartRate, pageable);
     }
 
     @Override
-    public Page<RunningInformation> findAllRunningInformationOrderByHealthLevel(Pageable pageable) {
-        return null;
+    public Page<RunningInformation> findAllRunningInformationOrderByHealWarningLevel(RunningInformation.HealWarningLevel healWarningLevel, Pageable pageable) {
+        return runningInformationRepository.findAllRunningInformationOrderByHealWarningLevel(healWarningLevel, pageable);
     }
 
     @Override
     public void deleteAll() {
+        runningInformationRepository.deleteAll();
+    }
 
+    @Override
+    public void deleteByRunningID(String runningId) {
+        runningInformationRepository.deleteByRunningId(runningId);
     }
 }
