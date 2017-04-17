@@ -15,4 +15,11 @@ public interface RunningInformationRepository extends JpaRepository<RunningInfor
             @Param("heartRate") int heartRate,
             Pageable pageable
     );
+
+    Page<RunningInformation> findAllRunningInformationOrderByHealWarningLevel(
+            @Param("healWarningLevel") RunningInformation.HealWarningLevel healWarningLevel,
+            Pageable pageable
+    );
+
+    void deleteByRunningId(@Param("runningId") String runningId);
 }
