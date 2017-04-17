@@ -13,7 +13,9 @@ public interface RunningInformationService {
 
     public Page<RunningInformation> findByHeartRateGreaterThan(int heartRate, Pageable pageable);
 
-    public Page<RunningInformation>  findAllRunningInformationOrderByHealthLevel(Pageable pageable);
+    public Page<RunningInformation>  findAllRunningInformationOrderByHealWarningLevel(RunningInformation.HealWarningLevel healWarningLevel, Pageable pageable);
 
     public void deleteAll();
+
+    public void deleteByRunningID(String runningId);
 }
